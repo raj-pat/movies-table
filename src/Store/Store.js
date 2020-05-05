@@ -1,5 +1,6 @@
 import { getMovies } from "../Starter Code/services/fakeMovieService";
 import { createStore } from "redux";
+
 export function reducer(state = getMovies(), action) {
   //   console.log(getMovies());
   switch (action.type) {
@@ -11,5 +12,6 @@ export function reducer(state = getMovies(), action) {
       return state;
   }
 }
-export let store = createStore(reducer);
+let store = createStore(reducer);
+export default store
 // console.log(store.getState());

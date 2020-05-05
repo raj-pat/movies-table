@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-
+import { store } from "../Store/Store";
+import { connect } from "react-redux";
 import TableRow from "./TableRow";
 class Table extends Component {
   state = {};
   render() {
-    
     return (
       <React.Fragment>
         <table className="table table-responsive-med m-5">
@@ -26,5 +26,16 @@ class Table extends Component {
     );
   }
 }
+//function mapping what properties of the state we will be using, return object
+const mapStateToProps = (state) => ({
+  moviesList: state,
+});
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onDelete: (idToDelete) => dispatch({ type: "Delete", id: idToDelete }),
+  };
+};
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Table);
 export default Table;
