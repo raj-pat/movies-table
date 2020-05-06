@@ -3,11 +3,22 @@ import { createStore } from "redux";
 
 export function reducer(state = getMovies(), action) {
   //   console.log(getMovies());
+  let newState;
   switch (action.type) {
     case "DELETE":
-      return state;
-    case "del2":
-      return state;
+      newState = state.filter((movieObject) => movieObject._id !== action.id);
+      return newState;
+
+    case "LIKE":
+      newState = state.map((movieObject) => {
+        if (movieObject._id === action.id) {
+          let newMovie = movieObject;
+          newMovie.liked = !newMovie.liked;
+          return newMovie;
+        }
+        return movieObject;
+      });
+      return newState;
     default:
       return state;
   }

@@ -20,7 +20,14 @@ class Table extends Component {
           </thead>
           <tbody>
             {this.props.moviesList.map((movieObject) => {
-              return <TableRow key={movieObject._id} movie={movieObject} />;
+              return (
+                <TableRow
+                  key={movieObject._id}
+                  movie={movieObject}
+                  onLikeDispatch={this.props.onLikeDispatch}
+                  onDeleteDispatch={this.props.onDelete}
+                />
+              );
             })}
           </tbody>
         </table>
@@ -35,7 +42,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onDelete: (idToDelete) => dispatch({ type: "Delete", id: idToDelete }),
+    onDelete: (idToDelete) => dispatch({ type: "DELETE", id: idToDelete }),
+    onLikeDispatch: (_id) => dispatch({ type: "LIKE", id: _id }),
   };
 };
 

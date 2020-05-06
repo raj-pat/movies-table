@@ -16,16 +16,29 @@ class TableRow extends Component {
         <td>{dailyRentalRate}</td>
         <td>{this.getLikeIcon()}</td>
         <td>
-          <button className="btn btn-sm btn-danger">Delete </button>
+          <button
+            onClick={() => this.props.onDeleteDispatch(_id)}
+            className="btn btn-sm btn-danger"
+          >
+            Delete
+          </button>
         </td>
       </tr>
     );
   }
 
   getLikeIcon() {
-    let liked = this.props.movie.liked;
+    let { liked, _id } = this.props.movie;
+
     let btn_class = "btn btn-sm btn-" + (liked ? "success" : "primary");
-    return <button className={btn_class}>{liked ? "Liked" : "Like"}</button>;
+    return (
+      <button
+        onClick={() => this.props.onLikeDispatch(_id)}
+        className={btn_class}
+      >
+        {liked ? "Liked" : "Like"}
+      </button>
+    );
   }
 }
 
