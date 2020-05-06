@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { store } from "../Store/Store";
+
 import { connect } from "react-redux";
 import TableRow from "./TableRow";
 class Table extends Component {
@@ -19,7 +19,9 @@ class Table extends Component {
             </tr>
           </thead>
           <tbody>
-            <TableRow />
+            {this.props.moviesList.map((movieObject) => {
+              return <TableRow key={movieObject._id} movie={movieObject} />;
+            })}
           </tbody>
         </table>
       </React.Fragment>
@@ -37,5 +39,5 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Table);
-export default Table;
+export default connect(mapStateToProps, mapDispatchToProps)(Table);
+// export default Table;
