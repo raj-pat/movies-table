@@ -19,6 +19,14 @@ export function reducer(state = getMovies(), action) {
         return movieObject;
       });
       return newState;
+    case "FILTER":
+      if (action.filterBy === "All") {
+        return getMovies();
+      }
+      newState = state.filter(
+        (movieObject) => movieObject.genre.name === action.filterBy
+      );
+      return newState;
     default:
       return state;
   }

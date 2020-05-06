@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Table from "./Table";
 import { Provider } from "react-redux";
 import store from "../Store/Store";
+import FilterComp from "./FilterComp";
 
 class App extends Component {
   state = {};
@@ -9,9 +10,11 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Table />
+        <div className="d-flex flex">
+        <FilterComp />
+        <Table />  
+        </div>
       </Provider>
-      
     );
   }
 }

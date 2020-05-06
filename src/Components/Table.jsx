@@ -7,7 +7,7 @@ class Table extends Component {
   render() {
     return (
       <React.Fragment>
-        <table className="table table-responsive-med m-5">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Title</th>
