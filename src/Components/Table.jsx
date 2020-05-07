@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-
 import { connect } from "react-redux";
 import TableRow from "./TableRow";
 import Showing from "./Showing";
+import Pagination from "./Pagination";
+
+
 class Table extends Component {
   state = {};
   render() {
@@ -34,6 +36,7 @@ class Table extends Component {
               })}
             </tbody>
           </table>
+          <Pagination />
         </div>
       </React.Fragment>
     );
