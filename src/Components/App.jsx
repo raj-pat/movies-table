@@ -11,8 +11,8 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="d-flex flex">
-        <FilterComp />
-        <Table />  
+          <FilterComp />
+          <Table />
         </div>
       </Provider>
     );
