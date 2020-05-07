@@ -77,7 +77,7 @@ const movies = [
 ];
 
 export function getMovies() {
-  return movies;
+  return { AllMovies: movies, currentPage: 1 };
 }
 
 export function getMovie(id) {

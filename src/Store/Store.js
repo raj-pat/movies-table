@@ -5,11 +5,13 @@ export function reducer(state = getMovies(), action) {
   let newState;
   switch (action.type) {
     case "DELETE":
-      newState = state.filter((movieObject) => movieObject._id !== action.id);
-      return newState;
+      newState = state.AllMovies.filter(
+        (movieObject) => movieObject._id !== action.id
+      );
+      return { AllMovies: newState, currentPage: state.currentPage };
 
     case "LIKE":
-      newState = state.map((movieObject) => {
+      newState = state.AllMovies.map((movieObject) => {
         if (movieObject._id === action.id) {
           let newMovie = movieObject;
           newMovie.liked = !newMovie.liked;
@@ -17,15 +19,17 @@ export function reducer(state = getMovies(), action) {
         }
         return movieObject;
       });
-      return newState;
+      return { AllMovies: newState, currentPage: state.currentPage };
     case "FILTER":
       if (action.filterBy === "All") {
         return getMovies();
       }
-      newState = state.filter(
+      newState = state.AllMovies.filter(
         (movieObject) => movieObject.genre.name === action.filterBy
       );
-      return newState;
+      return { AllMovies: newState, currentPage: state.currentPage };
+    case "CHANGE-PAGE":
+      return { AllMovies: state.AllMovies, currentPage: action.page };
     default:
       return state;
   }

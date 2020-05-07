@@ -4,14 +4,13 @@ import TableRow from "./TableRow";
 import Showing from "./Showing";
 import Pagination from "./Pagination";
 
-
 class Table extends Component {
   state = {};
   render() {
     return (
       <React.Fragment>
         <div style={{ width: "80%" }}>
-          <Showing />
+          <Showing count={this.props.moviesList.length} />
           <table className="table">
             <thead>
               <tr>
@@ -19,8 +18,8 @@ class Table extends Component {
                 <th scope="col">Genre</th>
                 <th scope="col">Stock</th>
                 <th scope="col">Rating</th>
-                <th scope="col">Like</th>
-                <th scope="col">Delete</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
@@ -42,9 +41,16 @@ class Table extends Component {
     );
   }
 }
+
+const getCurrentMovies = ({ AllMovies, currentPage }) => {
+  let end = currentPage * 4;
+  let temp = [...AllMovies];
+  let page = temp.splice(end - 4, end);
+  return page;
+};
 //function mapping what properties of the state we will be using, return object
 const mapStateToProps = (state) => ({
-  moviesList: state,
+  moviesList: getCurrentMovies(state),
 });
 
 const mapDispatchToProps = (dispatch) => {

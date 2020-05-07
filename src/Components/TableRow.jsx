@@ -29,7 +29,6 @@ class TableRow extends Component {
   }
 
   getLikeIcon() {
-    
     let { liked, _id } = this.props.movie;
     let btn_class = "btn btn-sm btn-" + (liked ? "success" : "primary");
 
