@@ -44,8 +44,10 @@ class Table extends Component {
 
 const getCurrentMovies = ({ AllMovies, currentPage }) => {
   let end = currentPage * 4;
+  console.log(end - 4, end);
   let temp = [...AllMovies];
-  let page = temp.splice(end - 4, end);
+  let page = AllMovies.slice(end - 4, end);
+  console.log(page);
   return page;
 };
 //function mapping what properties of the state we will be using, return object
